@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :roll_calls
   root 'welcome#index'
   resources :devices
   resources :groups

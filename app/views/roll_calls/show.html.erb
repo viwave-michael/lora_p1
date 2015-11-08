@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @roll_call.device %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @roll_call.when %>
+</p>
+
+<p>
+  <strong>Lng:</strong>
+  <%= @roll_call.lng %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @roll_call.lat %>
+</p>
+
+<p>
+  <strong>Manual:</strong>
+  <%= @roll_call.manual %>
+</p>
+
+<%= link_to 'Edit', edit_roll_call_path(@roll_call) %> |
+<%= link_to 'Back', roll_calls_path %>

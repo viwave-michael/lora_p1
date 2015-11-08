@@ -32,3 +32,5 @@ p2.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:
 p3.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
 p3.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
 p3.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
+
+rc1 = bs2.roll_calls.create(when: DateTime.new(2015, 10, 9, 15, 20, 0), lng:139.70, lat:35.6, manual: false)
