@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @position.path %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @position.when %>
+</p>
+
+<p>
+  <strong>Lng:</strong>
+  <%= @position.lng %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @position.lat %>
+</p>
+
+<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Back', positions_path %>
