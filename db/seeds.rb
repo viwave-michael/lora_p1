@@ -34,3 +34,11 @@ p3.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:
 p3.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
 
 rc1 = bs2.roll_calls.create(when: DateTime.new(2015, 10, 9, 15, 20, 0), lng:139.70, lat:35.6, manual: false)
+rc1.roll_call_answers.create(device_id: en2.id, when: DateTime.new(2015, 10, 9, 15, 20, 20), lng:139.70, lat:35.6)
+rc1.roll_call_answers.create(device_id: en3.id, when: DateTime.new(2015, 10, 9, 15, 20, 18), lng:139.70, lat:35.6)
+rc1.roll_call_answers.create(device_id: en4.id, when: DateTime.new(2015, 10, 9, 15, 20, 26), lng:139.70, lat:35.6)
+
+rc2 = bs2.roll_calls.create(when: DateTime.new(2015, 10, 9, 15, 55, 20), lng:139.70, lat:35.6, manual: true)
+rc2.roll_call_answers.create(device_id: en2.id, when: DateTime.new(2015, 10, 9, 15, 58, 20), lng:139.94, lat:34.9)
+rc2.roll_call_answers.create(device_id: en3.id, when: DateTime.new(2015, 10, 9, 15, 56, 33), lng:139.92, lat:35.0)
+rc2.roll_call_answers.create(device_id: en4.id, when: DateTime.new(2015, 10, 9, 16, 03, 4), lng:139.94, lat:34.9)

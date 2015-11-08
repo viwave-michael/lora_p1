@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Roll Call Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Roll call</th>
+      <th>Device</th>
+      <th>When</th>
+      <th>Lng</th>
+      <th>Lat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roll_call_answers.each do |roll_call_answer| %>
+      <tr>
+        <td><%= roll_call_answer.roll_call %></td>
+        <td><%= roll_call_answer.device.serial %></td>
+        <td><%= roll_call_answer.when %></td>
+        <td><%= roll_call_answer.lng %></td>
+        <td><%= roll_call_answer.lat %></td>
+        <td><%= link_to 'Show', roll_call_answer %></td>
+        <td><%= link_to 'Edit', edit_roll_call_answer_path(roll_call_answer) %></td>
+        <td><%= link_to 'Destroy', roll_call_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roll call answer', new_roll_call_answer_path %>
+
+<%= render 'shared/footer' %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  roll_call_id: 
+  device_id: 
+  when: 2015-11-08 13:46:26
+  lng: 1.5
+  lat: 1.5
+
+two:
+  roll_call_id: 
+  device_id: 
+  when: 2015-11-08 13:46:26
+  lng: 1.5
+  lat: 1.5

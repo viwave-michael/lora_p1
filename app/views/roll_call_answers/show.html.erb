@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Roll call:</strong>
+  <%= @roll_call_answer.roll_call %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @roll_call_answer.device %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @roll_call_answer.when %>
+</p>
+
+<p>
+  <strong>Lng:</strong>
+  <%= @roll_call_answer.lng %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @roll_call_answer.lat %>
+</p>
+
+<%= link_to 'Edit', edit_roll_call_answer_path(@roll_call_answer) %> |
+<%= link_to 'Back', roll_call_answers_path %>
