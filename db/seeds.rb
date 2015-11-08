@@ -16,3 +16,7 @@ g2.devices << bs2
 g2.devices << en2
 g2.devices << en3
 g2.devices << en4
+
+en2.paths.create()
+en3.paths.create()
+en4.paths.create()
