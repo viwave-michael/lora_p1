@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Description</th>
       <th colspan="3"></th>
+      <th>Devices</th>
     </tr>
   </thead>
 
@@ -19,6 +20,13 @@
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <ul>
+            <% group.devices.each do |device| %>
+            <li><%= device.serial %></li>
+            <% end %>
+          </ul>
+        </td>
       </tr>
     <% end %>
   </tbody>

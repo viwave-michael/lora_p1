@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106045808) do
+ActiveRecord::Schema.define(version: 20151108023148) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "serial"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20151106045808) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "devices_groups", id: false, force: :cascade do |t|
+    t.integer "device_id"
+    t.integer "group_id"
+  end
+
+  add_index "devices_groups", ["device_id"], name: "index_devices_groups_on_device_id"
+  add_index "devices_groups", ["group_id"], name: "index_devices_groups_on_group_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
