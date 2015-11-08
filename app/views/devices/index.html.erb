@@ -9,6 +9,7 @@
       <th>Capability</th>
       <th colspan="3"></th>
       <th>Groups</th>
+      <th>Paths</th>
     </tr>
   </thead>
 
@@ -27,6 +28,17 @@
             <% end %>
           </ul>
         </td>
+        <td>
+          <% if device.paths.any? %>
+            <ul>
+              <% device.paths.each do |path| %>
+              <li>#position: <%= path.positions.size %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            N/A
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -35,3 +47,5 @@
 <br>
 
 <%= link_to 'New Device', new_device_path %>
+
+<%= render 'shared/footer' %>
