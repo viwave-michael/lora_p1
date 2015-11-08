@@ -14,14 +14,14 @@
   <tbody>
     <% @paths.each do |path| %>
       <tr>
-        <td><%= path.device.serial %></td>
+        <td><%= link_to path.device.serial, path.device %></td>
         <td><%= link_to 'Show', path %></td>
         <td><%= link_to 'Edit', edit_path_path(path) %></td>
         <td><%= link_to 'Destroy', path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td>
           <ul>
             <% path.positions.each do |position| %>
-            <li><%= position.lng %>, <%= position.lat%></li>
+            <li><%= link_to 'position', position %></li>
             <% end %>
           </ul>
         </td>

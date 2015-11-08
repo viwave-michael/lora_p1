@@ -16,7 +16,7 @@
   <tbody>
     <% @positions.each do |position| %>
       <tr>
-        <td><%= position.path %></td>
+        <td><%= link_to 'path', position.path %></td>
         <td><%= position.when %></td>
         <td><%= position.lng %></td>
         <td><%= position.lat %></td>

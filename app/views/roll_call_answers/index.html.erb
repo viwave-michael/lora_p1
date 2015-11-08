@@ -15,16 +15,16 @@
   </thead>
 
   <tbody>
-    <% @roll_call_answers.each do |roll_call_answer| %>
+    <% @roll_call_answers.each do |answer| %>
       <tr>
-        <td><%= roll_call_answer.roll_call %></td>
-        <td><%= roll_call_answer.device.serial %></td>
-        <td><%= roll_call_answer.when %></td>
-        <td><%= roll_call_answer.lng %></td>
-        <td><%= roll_call_answer.lat %></td>
-        <td><%= link_to 'Show', roll_call_answer %></td>
-        <td><%= link_to 'Edit', edit_roll_call_answer_path(roll_call_answer) %></td>
-        <td><%= link_to 'Destroy', roll_call_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'RollCall', answer.roll_call %></td>
+        <td><%= link_to answer.device.serial, answer.device %></td>
+        <td><%= answer.when %></td>
+        <td><%= answer.lng %></td>
+        <td><%= answer.lat %></td>
+        <td><%= link_to 'Show', answer %></td>
+        <td><%= link_to 'Edit', edit_roll_call_answer_path(answer) %></td>
+        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

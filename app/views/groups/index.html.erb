@@ -23,7 +23,7 @@
         <td>
           <ul>
             <% group.devices.each do |device| %>
-            <li><%= device.serial %></li>
+            <li><%= link_to device.serial, device_path(device) %></li>
             <% end %>
           </ul>
         </td>

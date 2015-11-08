@@ -17,7 +17,7 @@
   <tbody>
     <% @roll_calls.each do |roll_call| %>
       <tr>
-        <td><%= roll_call.device %></td>
+        <td><%= link_to roll_call.device.serial, roll_call.device %></td>
         <td><%= roll_call.when %></td>
         <td><%= roll_call.lng %></td>
         <td><%= roll_call.lat %></td>
