@@ -42,3 +42,5 @@ rc2 = bs2.roll_calls.create(when: DateTime.new(2015, 10, 9, 15, 55, 20), lng:139
 rc2.roll_call_answers.create(device_id: en2.id, when: DateTime.new(2015, 10, 9, 15, 58, 20), lng:139.94, lat:34.9)
 rc2.roll_call_answers.create(device_id: en3.id, when: DateTime.new(2015, 10, 9, 15, 56, 33), lng:139.92, lat:35.0)
 rc2.roll_call_answers.create(device_id: en4.id, when: DateTime.new(2015, 10, 9, 16, 03, 4), lng:139.94, lat:34.9)
+
+en3.help_calls.create(when: DateTime.new(2015, 10, 9, 15, 55, 30), lng:139.92, lat:34.7)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108054626) do
+ActiveRecord::Schema.define(version: 20151109022803) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "serial"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20151108054626) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "help_calls", force: :cascade do |t|
+    t.integer  "device_id"
+    t.datetime "when"
+    t.float    "lng"
+    t.float    "lat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "help_calls", ["device_id"], name: "index_help_calls_on_device_id"
 
   create_table "paths", force: :cascade do |t|
     t.integer  "device_id"

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @help_call.device %>
+</p>
+
+<p>
+  <strong>When:</strong>
+  <%= @help_call.when %>
+</p>
+
+<p>
+  <strong>Lng:</strong>
+  <%= @help_call.lng %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @help_call.lat %>
+</p>
+
+<%= link_to 'Edit', edit_help_call_path(@help_call) %> |
+<%= link_to 'Back', help_calls_path %>

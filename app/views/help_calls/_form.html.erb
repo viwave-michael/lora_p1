@@ -1,0 +1,33 @@
+<%= form_for(@help_call) do |f| %>
+  <% if @help_call.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@help_call.errors.count, "error") %> prohibited this help_call from being saved:</h2>
+
+      <ul>
+      <% @help_call.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :device_id %><br>
+    <%= f.text_field :device_id %>
+  </div>
+  <div class="field">
+    <%= f.label :when %><br>
+    <%= f.datetime_select :when %>
+  </div>
+  <div class="field">
+    <%= f.label :lng %><br>
+    <%= f.text_field :lng %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

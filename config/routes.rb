@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :roll_call_answers
-  resources :roll_calls
   root 'welcome#index'
   resources :devices
   resources :groups
   resources :paths
   resources :positions
+  resources :roll_calls
+  resources :roll_call_answers
+  resources :help_calls
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

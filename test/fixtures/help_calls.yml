@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  device_id: 
+  when: 2015-11-09 10:28:03
+  lng: 1.5
+  lat: 1.5
+
+two:
+  device_id: 
+  when: 2015-11-09 10:28:03
+  lng: 1.5
+  lat: 1.5
