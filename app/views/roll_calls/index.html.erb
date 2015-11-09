@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Device</th>
       <th>When</th>
       <th>Lng</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @roll_calls.each do |roll_call| %>
       <tr>
+        <td><%= roll_call.id %></td>
         <td><%= link_to roll_call.device.serial, roll_call.device %></td>
         <td><%= roll_call.when %></td>
         <td><%= roll_call.lng %></td>

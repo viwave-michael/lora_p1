@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Device</th>
       <th>When</th>
       <th>Lng</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @help_calls.each do |help_call| %>
       <tr>
+        <td><%= help_call.id %></td>
         <td><%= link_to help_call.device.serial, help_call.device %></td>
         <td><%= help_call.when %></td>
         <td><%= help_call.lng %></td>

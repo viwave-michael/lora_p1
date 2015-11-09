@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Path</th>
       <th>When</th>
       <th>Lng</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @positions.each do |position| %>
       <tr>
+        <td><%= position.id %></td>
         <td><%= link_to 'path', position.path %></td>
         <td><%= position.when %></td>
         <td><%= position.lng %></td>

@@ -43,5 +43,5 @@ en2.roll_call_answers.create(roll_call_id: rc2.id, when: DateTime.new(2015, 10, 
 en3.roll_call_answers.create(roll_call_id: rc2.id, when: DateTime.new(2015, 10, 9, 15, 56, 33), lng:139.92, lat:35.0)
 en4.roll_call_answers.create(roll_call_id: rc2.id, when: DateTime.new(2015, 10, 9, 16, 03, 4), lng:139.94, lat:34.9)
 
-en3.help_calls.create(when: DateTime.new(2015, 10, 9, 15, 55, 30), lng:139.92, lat:34.7)
-bs2.help_call_answers.create(when: DateTime.new(2015, 10, 9, 15, 56, 0), lng:139.94, lat:34.9)
+hc1 = en3.help_calls.create(when: DateTime.new(2015, 10, 9, 15, 55, 30), lng:139.92, lat:34.7)
+bs2.help_call_answers.create(help_call_id: hc1.id, when: DateTime.new(2015, 10, 9, 15, 56, 0), lng:139.94, lat:34.9)
