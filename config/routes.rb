@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :help_call_answers
   root 'welcome#index'
   resources :devices
   resources :groups

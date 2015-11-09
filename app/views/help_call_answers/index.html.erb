@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Help Call Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Help call</th>
+      <th>When</th>
+      <th>Lng</th>
+      <th>Lat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @help_call_answers.each do |help_call_answer| %>
+      <tr>
+        <td><%= link_to help_call_answer.device.serial, help_call_answer.device %></td>
+        <td><%= help_call_answer.help_call %></td>
+        <td><%= help_call_answer.when %></td>
+        <td><%= help_call_answer.lng %></td>
+        <td><%= help_call_answer.lat %></td>
+        <td><%= link_to 'Show', help_call_answer %></td>
+        <td><%= link_to 'Edit', edit_help_call_answer_path(help_call_answer) %></td>
+        <td><%= link_to 'Destroy', help_call_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Help call answer', new_help_call_answer_path %>
+
+<%= render 'shared/footer' %>
