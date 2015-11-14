@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :help_call_answers
   root 'welcome#index'
   resources :devices
   resources :groups do
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   resources :roll_calls
   resources :roll_call_answers
   resources :help_calls
+  resources :help_call_answers
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
