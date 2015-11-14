@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :devices]
 
   # GET /groups
   # GET /groups.json
@@ -59,6 +59,10 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def devices
+    @devices = @group.devices
   end
 
   private

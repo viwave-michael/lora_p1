@@ -17,6 +17,8 @@ g2.devices << en2
 g2.devices << en3
 g2.devices << en4
 
+g3 = Group.create(name: 'Back To The Future', description: 'Go watch the movie..')
+
 p1 = en2.paths.create()
 p2 = en3.paths.create()
 p3 = en4.paths.create()

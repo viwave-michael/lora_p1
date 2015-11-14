@@ -46,4 +46,10 @@ class GroupsControllerTest < ActionController::TestCase
 
     assert_redirected_to groups_path
   end
+
+  test "should get devices" do
+    get :devices, id: @group
+    assert_response :success
+    assert_not_nil assigns(:devices)
+  end
 end

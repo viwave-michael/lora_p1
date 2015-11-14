@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :help_call_answers
   root 'welcome#index'
   resources :devices
-  resources :groups
+  resources :groups do
+    member do
+      get 'devices'
+    end
+  end
   resources :paths
   resources :positions
   resources :roll_calls
