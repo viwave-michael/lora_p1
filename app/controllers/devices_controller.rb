@@ -1,15 +1,25 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:index, :new, :create]
 
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    if @group
+      @devices = @group.devices
+    else
+      @devices = Device.all
+    end
   end
 
   # GET /devices/1
   # GET /devices/1.json
   def show
+    if params[:group_id]
+      @back_path = group_path(params[:group_id])
+    else
+      @back_path = groups_path
+    end
   end
 
   # GET /devices/new
@@ -65,6 +75,12 @@ class DevicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_device
       @device = Device.find(params[:id])
+    end
+
+    def set_group
+      if params[:group_id]
+        @group = Group.find(params[:group_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

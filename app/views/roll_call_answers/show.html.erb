@@ -2,12 +2,12 @@
 
 <p>
   <strong>Roll call:</strong>
-  <%= @roll_call_answer.roll_call %>
+  roll_calls/<%= @roll_call_answer.roll_call.id %>
 </p>
 
 <p>
   <strong>Device:</strong>
-  <%= @roll_call_answer.device %>
+  devices/<%= @roll_call_answer.device.id %>
 </p>
 
 <p>
@@ -26,4 +26,4 @@
 </p>
 
 <%= link_to 'Edit', edit_roll_call_answer_path(@roll_call_answer) %> |
-<%= link_to 'Back', roll_call_answers_path %>
+<%= link_to 'Back', @back_path %>

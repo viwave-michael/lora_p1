@@ -10,5 +10,64 @@
   <%= @device.capability %>
 </p>
 
+<p>
+  <strong>Paths:</strong>
+  <ul>
+    <% @device.paths.each do |path| %>
+    <li>
+      <%= link_to 'path', path_path(path, device_id: @device.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Roll Calls</strong>
+  <ul>
+    <% @device.roll_calls.each do |roll_call| %>
+    <li>
+      <%= link_to 'roll call', 
+        roll_call_path(roll_call, device_id: @device.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Roll Call Answers</strong>
+  <ul>
+    <% @device.roll_call_answers.each do |answer| %>
+    <li>
+      <%= link_to 'answer', 
+        roll_call_answer_path(answer, device_id: @device.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Help Calls</strong>
+  <ul>
+    <% @device.help_calls.each do |help_call| %>
+    <li>
+      <%= link_to 'help call',
+        help_call_path(help_call, device_id: @device.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Help Call Answers</strong>
+  <ul>
+    <% @device.help_call_answers.each do |answer| %>
+    <li>
+      <%= link_to 'answer', 
+        help_call_answer_path(answer, device_id: @device.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', devices_path %>
+<%= link_to 'Back', @back_path %>

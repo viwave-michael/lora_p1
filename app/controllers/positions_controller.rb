@@ -1,20 +1,30 @@
 class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :update, :destroy]
+  before_action :set_path, only: [:index, :new, :create]
 
   # GET /positions
   # GET /positions.json
   def index
-    @positions = Position.all
+    if @path
+      @positions = @path.positions
+    else
+      @positions = Position.all
+    end
   end
 
   # GET /positions/1
   # GET /positions/1.json
   def show
+    if params[:path_id]
+      @back_path = path_path(@position.path)
+    else
+      @back_path = groups_path # paths_path
+    end
   end
 
   # GET /positions/new
   def new
-    @position = Position.new
+    @position = @path.positions.new
   end
 
   # GET /positions/1/edit
@@ -24,7 +34,7 @@ class PositionsController < ApplicationController
   # POST /positions
   # POST /positions.json
   def create
-    @position = Position.new(position_params)
+    @position = @path.positions.new(position_params)
 
     respond_to do |format|
       if @position.save
@@ -54,9 +64,10 @@ class PositionsController < ApplicationController
   # DELETE /positions/1
   # DELETE /positions/1.json
   def destroy
+    path = @position.path
     @position.destroy
     respond_to do |format|
-      format.html { redirect_to positions_url, notice: 'Position was successfully destroyed.' }
+      format.html { redirect_to path_url(path), notice: 'Position was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +76,12 @@ class PositionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_position
       @position = Position.find(params[:id])
+    end
+
+    def set_path
+      if params[:path_id]
+        @path = Path.find(params[:path_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

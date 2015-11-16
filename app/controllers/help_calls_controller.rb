@@ -1,20 +1,30 @@
 class HelpCallsController < ApplicationController
   before_action :set_help_call, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:index, :new, :create]
 
   # GET /help_calls
   # GET /help_calls.json
   def index
-    @help_calls = HelpCall.all
+    if @device
+      @help_calls = @device.help_calls
+    else
+      @help_calls = HelpCall.all
+    end
   end
 
   # GET /help_calls/1
   # GET /help_calls/1.json
   def show
+    if params[:device_id]
+      @back_path = device_path(@help_call.device)
+    else
+      @back_path = groups_path # help_calls_path
+    end
   end
 
   # GET /help_calls/new
   def new
-    @help_call = HelpCall.new
+    @help_call = @device.help_calls.new
   end
 
   # GET /help_calls/1/edit
@@ -24,7 +34,7 @@ class HelpCallsController < ApplicationController
   # POST /help_calls
   # POST /help_calls.json
   def create
-    @help_call = HelpCall.new(help_call_params)
+    @help_call = @device.help_calls.new(help_call_params)
 
     respond_to do |format|
       if @help_call.save
@@ -54,9 +64,10 @@ class HelpCallsController < ApplicationController
   # DELETE /help_calls/1
   # DELETE /help_calls/1.json
   def destroy
+    device = @help_call.device
     @help_call.destroy
     respond_to do |format|
-      format.html { redirect_to help_calls_url, notice: 'Help call was successfully destroyed.' }
+      format.html { redirect_to device_url(device), notice: 'Help call was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +76,12 @@ class HelpCallsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_help_call
       @help_call = HelpCall.find(params[:id])
+    end
+
+    def set_device
+      if params[:device_id]
+        @device = Device.find(params[:device_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

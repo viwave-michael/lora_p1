@@ -2,12 +2,12 @@
 
 <p>
   <strong>Device:</strong>
-  <%= @help_call_answer.device %>
+  devices/<%= @help_call_answer.device.id %>
 </p>
 
 <p>
   <strong>Help call:</strong>
-  <%= @help_call_answer.help_call %>
+  help_calls/<%= @help_call_answer.help_call.id %>
 </p>
 
 <p>
@@ -26,4 +26,4 @@
 </p>
 
 <%= link_to 'Edit', edit_help_call_answer_path(@help_call_answer) %> |
-<%= link_to 'Back', help_call_answers_path %>
+<%= link_to 'Back', @back_path %>

@@ -1,4 +1,4 @@
-<%= form_for(@path) do |f| %>
+<%= form_for([@device, @path]) do |f| %>
   <% if @path.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@path.errors.count, "error") %> prohibited this path from being saved:</h2>

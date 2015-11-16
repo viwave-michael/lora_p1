@@ -1,20 +1,32 @@
 class RollCallAnswersController < ApplicationController
   before_action :set_roll_call_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:index, :new, :create]
 
   # GET /roll_call_answers
   # GET /roll_call_answers.json
   def index
-    @roll_call_answers = RollCallAnswer.all
+    if @device
+      @roll_call_answers = @device.roll_call_answers
+    else
+      @roll_call_answers = RollCallAnswer.all
+    end
   end
 
   # GET /roll_call_answers/1
   # GET /roll_call_answers/1.json
   def show
+    if params[:roll_call_id]
+      @back_path = roll_call_path(@roll_call_answer.roll_call)
+    elsif params[:device_id]
+      @back_path = device_path(@roll_call_answer.device)
+    else
+      @back_path = groups_path # roll_call_answers_path
+    end
   end
 
   # GET /roll_call_answers/new
   def new
-    @roll_call_answer = RollCallAnswer.new
+    @roll_call_answer = @device.roll_call_answers.new
   end
 
   # GET /roll_call_answers/1/edit
@@ -24,7 +36,7 @@ class RollCallAnswersController < ApplicationController
   # POST /roll_call_answers
   # POST /roll_call_answers.json
   def create
-    @roll_call_answer = RollCallAnswer.new(roll_call_answer_params)
+    @roll_call_answer = @device.roll_call_answers.new(roll_call_answer_params)
 
     respond_to do |format|
       if @roll_call_answer.save
@@ -54,9 +66,10 @@ class RollCallAnswersController < ApplicationController
   # DELETE /roll_call_answers/1
   # DELETE /roll_call_answers/1.json
   def destroy
+    device = @roll_call_answer.device
     @roll_call_answer.destroy
     respond_to do |format|
-      format.html { redirect_to roll_call_answers_url, notice: 'Roll call answer was successfully destroyed.' }
+      format.html { redirect_to device_url(device), notice: 'Roll call answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +78,12 @@ class RollCallAnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_roll_call_answer
       @roll_call_answer = RollCallAnswer.find(params[:id])
+    end
+
+    def set_device
+      if params[:device_id]
+        @device = Device.find(params[:device_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

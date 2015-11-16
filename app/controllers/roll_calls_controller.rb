@@ -1,20 +1,30 @@
 class RollCallsController < ApplicationController
   before_action :set_roll_call, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:index, :new, :create]
 
   # GET /roll_calls
   # GET /roll_calls.json
   def index
-    @roll_calls = RollCall.all
+    if @device
+      @roll_calls = @device.roll_calls
+    else
+      @roll_calls = RollCall.all
+    end
   end
 
   # GET /roll_calls/1
   # GET /roll_calls/1.json
   def show
+    if params[:device_id]
+      @back_path = device_path(@roll_call.device)
+    else
+      @back_path = groups_path # roll_calls_path
+    end
   end
 
   # GET /roll_calls/new
   def new
-    @roll_call = RollCall.new
+    @roll_call = @device.roll_calls.new
   end
 
   # GET /roll_calls/1/edit
@@ -24,7 +34,7 @@ class RollCallsController < ApplicationController
   # POST /roll_calls
   # POST /roll_calls.json
   def create
-    @roll_call = RollCall.new(roll_call_params)
+    @roll_call = @device.roll_calls.new(roll_call_params)
 
     respond_to do |format|
       if @roll_call.save
@@ -54,9 +64,10 @@ class RollCallsController < ApplicationController
   # DELETE /roll_calls/1
   # DELETE /roll_calls/1.json
   def destroy
+    device = @roll_call.device
     @roll_call.destroy
     respond_to do |format|
-      format.html { redirect_to roll_calls_url, notice: 'Roll call was successfully destroyed.' }
+      format.html { redirect_to device_url(device), notice: 'Roll call was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +76,12 @@ class RollCallsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_roll_call
       @roll_call = RollCall.find(params[:id])
+    end
+
+    def set_device
+      if params[:device_id]
+        @device = Device.find(params[:device_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

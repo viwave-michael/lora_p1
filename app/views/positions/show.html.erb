@@ -2,7 +2,7 @@
 
 <p>
   <strong>Path:</strong>
-  <%= @position.path %>
+  path/<%= @position.path.id %>
 </p>
 
 <p>
@@ -21,4 +21,4 @@
 </p>
 
 <%= link_to 'Edit', edit_position_path(@position) %> |
-<%= link_to 'Back', positions_path %>
+<%= link_to 'Back', @back_path %>

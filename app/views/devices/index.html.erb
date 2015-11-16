@@ -32,15 +32,7 @@
           </ul>
         </td>
         <td>
-          <% if device.paths.any? %>
-            <ul>
-              <% device.paths.each do |path| %>
-              <li><%= link_to 'path', path %></li>
-              <% end %>
-            </ul>
-          <% else %>
-            N/A
-          <% end %>
+          <%= link_to 'paths', device_paths_path(device) %>
         </td>
         <td>
           <% if device.roll_calls.any? %>

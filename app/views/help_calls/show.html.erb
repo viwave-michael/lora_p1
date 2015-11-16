@@ -2,7 +2,7 @@
 
 <p>
   <strong>Device:</strong>
-  <%= @help_call.device %>
+  devices/<%= @help_call.device.id %>
 </p>
 
 <p>
@@ -20,5 +20,17 @@
   <%= @help_call.lat %>
 </p>
 
+<p>
+  <strong>Help Call Answers</strong>
+  <ul>
+    <% @help_call.help_call_answers.each do |answer| %>
+    <li>
+      <%= link_to 'answer',
+        help_call_answer_path(answer, help_call_id: @help_call.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_help_call_path(@help_call) %> |
-<%= link_to 'Back', help_calls_path %>
+<%= link_to 'Back', @back_path %>

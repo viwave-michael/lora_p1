@@ -1,20 +1,32 @@
 class HelpCallAnswersController < ApplicationController
   before_action :set_help_call_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:index, :new, :create]
 
   # GET /help_call_answers
   # GET /help_call_answers.json
   def index
-    @help_call_answers = HelpCallAnswer.all
+    if @device
+      @help_call_answers = @device.help_call_answers
+    else
+      @help_call_answers = HelpCallAnswer.all
+    end
   end
 
   # GET /help_call_answers/1
   # GET /help_call_answers/1.json
   def show
+    if params[:help_call_id]
+      @back_path = help_call_path(@help_call_answer.help_call)
+    elsif params[:device_id]
+      @back_path = device_path(@help_call_answer.device)
+    else
+      @back_path = groups_path # help_call_answers_path
+    end
   end
 
   # GET /help_call_answers/new
   def new
-    @help_call_answer = HelpCallAnswer.new
+    @help_call_answer = @device.help_call_answers.new
   end
 
   # GET /help_call_answers/1/edit
@@ -24,7 +36,7 @@ class HelpCallAnswersController < ApplicationController
   # POST /help_call_answers
   # POST /help_call_answers.json
   def create
-    @help_call_answer = HelpCallAnswer.new(help_call_answer_params)
+    @help_call_answer = @device.help_call_answers.new(help_call_answer_params)
 
     respond_to do |format|
       if @help_call_answer.save
@@ -54,9 +66,10 @@ class HelpCallAnswersController < ApplicationController
   # DELETE /help_call_answers/1
   # DELETE /help_call_answers/1.json
   def destroy
+    device = @help_call_answer.device
     @help_call_answer.destroy
     respond_to do |format|
-      format.html { redirect_to help_call_answers_url, notice: 'Help call answer was successfully destroyed.' }
+      format.html { redirect_to device_url(device), notice: 'Help call answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +78,12 @@ class HelpCallAnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_help_call_answer
       @help_call_answer = HelpCallAnswer.find(params[:id])
+    end
+
+    def set_device
+      if params[:device_id]
+        @device = Device.find(params[:device_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

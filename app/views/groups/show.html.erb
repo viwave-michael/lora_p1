@@ -10,5 +10,14 @@
   <%= @group.description %>
 </p>
 
+<strong>Devices</strong>
+<ul>
+  <% @group.devices.each do |device| %>
+  <li><%= link_to device.serial, 
+    device_path(device, group_id: @group.id) %>
+  </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

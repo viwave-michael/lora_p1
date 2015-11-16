@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :devices
-  resources :groups do
-    member do
-      get 'devices'
+  resources :groups, shallow: true do
+    resources :devices do
+      resources :paths do
+        resources :positions
+      end
+      resources :roll_calls do
+        resources :roll_call_answers
+      end
+      resources :help_calls do
+        resources :help_call_answers
+      end
     end
   end
-  resources :paths
-  resources :positions
-  resources :roll_calls
-  resources :roll_call_answers
-  resources :help_calls
-  resources :help_call_answers
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

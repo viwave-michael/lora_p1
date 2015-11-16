@@ -2,8 +2,20 @@
 
 <p>
   <strong>Device:</strong>
-  <%= @path.device %>
+  <%= @path.device.serial %>
+</p>
+
+<p>
+  <strong>Positions</strong>
+  <ul>
+    <% @path.positions.each do |position| %>
+    <li>
+      <%= link_to 'position', 
+        position_path(position, path_id: @path.id) %>
+    </li>
+    <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_path_path(@path) %> |
-<%= link_to 'Back', paths_path %>
+<%= link_to 'Back', @back_path %>

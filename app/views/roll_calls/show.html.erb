@@ -2,7 +2,7 @@
 
 <p>
   <strong>Device:</strong>
-  <%= @roll_call.device %>
+  <%= @roll_call.device.serial %>
 </p>
 
 <p>
@@ -25,5 +25,17 @@
   <%= @roll_call.manual %>
 </p>
 
+<p>
+  <strong>Answers</strong>
+  <ul>
+    <% @roll_call.roll_call_answers.each do |answer| %>
+    <li>
+      <%= link_to 'answer', 
+        roll_call_answer_path(answer, roll_call_id: @roll_call.id) %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_roll_call_path(@roll_call) %> |
-<%= link_to 'Back', roll_calls_path %>
+<%= link_to 'Back', @back_path %>
