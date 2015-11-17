@@ -1,0 +1,14 @@
+<h1>Device</h1>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @device.serial %>
+</p>
+
+<p>
+<ul>
+  <% @groups.each do |group| %>
+    <li><%= group.name %></li>
+  <% end %>
+</ul>
+</p>

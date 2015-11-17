@@ -1,18 +1,37 @@
 Rails.application.routes.draw do
+  get 'group_devices/index'
+
+  get 'group_devices/new'
+
+  get 'group_devices/create'
+
+  get 'group_devices/remove'
+
+  get 'group_devices/destroy'
+
   root 'welcome#index'
-  resources :groups, shallow: true do
-    resources :devices do
-      resources :paths do
-        resources :positions
-      end
-      resources :roll_calls do
-        resources :roll_call_answers
-      end
-      resources :help_calls do
-        resources :help_call_answers
-      end
+  
+  resources :devices, shallow: true do
+    resources :paths do
+      resources :positions
+    end
+    resources :roll_calls do
+      resources :roll_call_answers
+    end
+    resources :help_calls do
+      resources :help_call_answers
     end
   end
+
+  resources :groups
+
+  resources :device_groups, only: [:index, :new, :create]
+  get 'device_groups/remove', to: 'device_groups#remove'
+  delete 'device_groups', to: 'device_groups#destroy'
+
+  resources :group_devices, only: [:index, :new, :create]
+  get 'group_devices/remove', to: 'group_devices#remove'
+  delete 'group_devices', to: 'group_devices#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

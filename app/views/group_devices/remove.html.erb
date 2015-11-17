@@ -1,0 +1,15 @@
+<h1>Remove Device from Group</h1>
+
+<p>
+  <strong>Group Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <ul>
+    <% @devices.each do |device| %>
+      <li><%= link_to device.serial,
+        group_devices_path(group_id: @group.id, device_id: device.id), method: :delete %></li>
+    <% end %>
+  </ul>
+</p>

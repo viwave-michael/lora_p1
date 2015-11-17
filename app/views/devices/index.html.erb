@@ -10,6 +10,7 @@
       <th>Capability</th>
       <th colspan="3"></th>
       <th>Groups</th>
+      <th colspan="2"></th>
       <th>Paths</th>
       <th>Roll calls</th>
     </tr>
@@ -30,6 +31,12 @@
             <li><%= link_to group.name, group_path(group) %></li>
             <% end %>
           </ul>
+        </td>
+        <td>
+          <%= link_to 'Add', new_device_group_path(device_id: device.id) %>
+        </td>
+        <td>
+          <%= link_to 'Remove', device_groups_remove_path(device_id: device.id) %>
         </td>
         <td>
           <%= link_to 'paths', device_paths_path(device) %>
