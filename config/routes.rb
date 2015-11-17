@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'group_devices/index'
-
-  get 'group_devices/new'
-
-  get 'group_devices/create'
-
-  get 'group_devices/remove'
-
-  get 'group_devices/destroy'
-
   root 'welcome#index'
   
   resources :devices, shallow: true do
