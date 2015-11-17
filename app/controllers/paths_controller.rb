@@ -86,6 +86,10 @@ class PathsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def path_params
-      params.require(:path).permit(:device_id)
+      if params[:device_id]
+        params.permit(:device_id)
+      else
+        params.require(:path).permit(:device_id)
+      end
     end
 end

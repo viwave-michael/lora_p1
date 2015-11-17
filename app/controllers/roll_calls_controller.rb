@@ -86,6 +86,10 @@ class RollCallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def roll_call_params
-      params.require(:roll_call).permit(:device_id, :when, :lng, :lat, :manual)
+      if params[:device_id]
+        params.permit(:device_id, :when, :lng, :lat, :manual)
+      else
+        params.require(:roll_call).permit(:device_id, :when, :lng, :lat, :manual)
+      end
     end
 end

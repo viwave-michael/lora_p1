@@ -86,6 +86,10 @@ class PositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_params
-      params.require(:position).permit(:path_id, :when, :lng, :lat)
+      if params[:path_id]
+        params.permit(:path_id, :when, :lng, :lat)
+      else
+        params.require(:position).permit(:path_id, :when, :lng, :lat)
+      end
     end
 end
