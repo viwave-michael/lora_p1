@@ -88,6 +88,10 @@ class HelpCallAnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def help_call_answer_params
-      params.require(:help_call_answer).permit(:device_id, :help_call_id, :when, :lng, :lat)
+      if params[:help_call_id]
+        params.permit(:help_call_id, :device_id, :when, :lng, :lat)
+      else
+        params.require(:help_call_answer).permit(:device_id, :help_call_id, :when, :lng, :lat)
+      end
     end
 end
