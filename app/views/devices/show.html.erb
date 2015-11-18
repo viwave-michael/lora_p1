@@ -12,6 +12,7 @@
 
 <p>
   <strong>Paths:</strong>
+  (<%= link_to 'Edit', device_paths_path(@device) %>)
   <ul>
     <% @device.paths.each do |path| %>
     <li>
@@ -23,6 +24,7 @@
 
 <p>
   <strong>Roll Calls</strong>
+  (<%= link_to 'Edit', device_roll_calls_path(@device) %>)
   <ul>
     <% @device.roll_calls.each do |roll_call| %>
     <li>
@@ -40,6 +42,7 @@
     <li>
       <%= link_to 'answer', 
         roll_call_answer_path(answer, device_id: @device.id) %>
+      (<%= link_to 'Edit', roll_call_path(answer.roll_call) %>)
     </li>
     <% end %>
   </ul>
@@ -47,6 +50,7 @@
 
 <p>
   <strong>Help Calls</strong>
+  (<%= link_to 'Edit', device_help_calls_path(@device) %>)
   <ul>
     <% @device.help_calls.each do |help_call| %>
     <li>
@@ -64,6 +68,7 @@
     <li>
       <%= link_to 'answer', 
         help_call_answer_path(answer, device_id: @device.id) %>
+      (<%= link_to 'Edit', help_call_path(answer.help_call) %>)
     </li>
     <% end %>
   </ul>

@@ -1,4 +1,4 @@
-<%= form_for(@help_call) do |f| %>
+<%= form_for([@device, @help_call]) do |f| %>
   <% if @help_call.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@help_call.errors.count, "error") %> prohibited this help_call from being saved:</h2>

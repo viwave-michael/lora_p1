@@ -38,7 +38,7 @@ class RollCallsController < ApplicationController
 
     respond_to do |format|
       if @roll_call.save
-        format.html { redirect_to @roll_call, notice: 'Roll call was successfully created.' }
+        format.html { redirect_to device_roll_calls_path(@device), notice: 'Roll call was successfully created.' }
         format.json { render :show, status: :created, location: @roll_call }
       else
         format.html { render :new }
@@ -67,7 +67,7 @@ class RollCallsController < ApplicationController
     device = @roll_call.device
     @roll_call.destroy
     respond_to do |format|
-      format.html { redirect_to device_url(device), notice: 'Roll call was successfully destroyed.' }
+      format.html { redirect_to device_roll_calls_path(device), notice: 'Roll call was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -86,10 +86,11 @@ class RollCallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def roll_call_params
-      if params[:device_id]
-        params.permit(:device_id, :when, :lng, :lat, :manual)
-      else
+      roll_call = params[:roll_call]
+      if roll_call && !roll_call.empty?
         params.require(:roll_call).permit(:device_id, :when, :lng, :lat, :manual)
+      else
+        params.permit(:device_id, :when, :lng, :lat, :manual)
       end
     end
 end

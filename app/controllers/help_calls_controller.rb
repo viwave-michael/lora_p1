@@ -38,7 +38,7 @@ class HelpCallsController < ApplicationController
 
     respond_to do |format|
       if @help_call.save
-        format.html { redirect_to @help_call, notice: 'Help call was successfully created.' }
+        format.html { redirect_to device_help_calls_path(@device), notice: 'Help call was successfully created.' }
         format.json { render :show, status: :created, location: @help_call }
       else
         format.html { render :new }
@@ -67,7 +67,7 @@ class HelpCallsController < ApplicationController
     device = @help_call.device
     @help_call.destroy
     respond_to do |format|
-      format.html { redirect_to device_url(device), notice: 'Help call was successfully destroyed.' }
+      format.html { redirect_to device_help_calls_path(device), notice: 'Help call was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -86,10 +86,11 @@ class HelpCallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def help_call_params
-      if params[:device_id]
-        params.permit(:device_id, :when, :lng, :lat)
-      else
+      help_call = params[:help_call]
+      if help_call && !help_call.empty?
         params.require(:help_call).permit(:device_id, :when, :lng, :lat)
+      else
+        params.permit(:device_id, :when, :lng, :lat)
       end
     end
 end
