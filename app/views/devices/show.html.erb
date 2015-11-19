@@ -11,12 +11,12 @@
 </p>
 
 <p>
-  <strong>Paths:</strong>
-  (<%= link_to 'Edit', device_paths_path(@device) %>)
+  <strong>Positions:</strong>
+  (<%= link_to 'Edit', device_positions_path(@device) %>)
   <ul>
-    <% @device.paths.each do |path| %>
+    <% @device.positions.each do |position| %>
     <li>
-      <%= link_to 'path', path_path(path, device_id: @device.id) %>
+      <%= link_to 'position', position_path(position, device_id: @device.id) %>
     </li>
     <% end %>
   </ul>

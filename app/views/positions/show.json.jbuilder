@@ -1,1 +1,1 @@
-json.extract! @position, :id, :path_id, :when, :lng, :lat, :created_at, :updated_at
+json.extract! @position, :id, :device_id, :when, :lng, :lat, :created_at, :updated_at

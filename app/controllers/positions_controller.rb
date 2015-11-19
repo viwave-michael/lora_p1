@@ -1,12 +1,12 @@
 class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :update, :destroy]
-  before_action :set_path, only: [:index, :new, :create]
+  before_action :set_device, only: [:index, :new, :create]
 
   # GET /positions
   # GET /positions.json
   def index
-    if @path
-      @positions = @path.positions
+    if @device
+      @positions = @device.positions
     else
       @positions = Position.all
     end
@@ -15,16 +15,12 @@ class PositionsController < ApplicationController
   # GET /positions/1
   # GET /positions/1.json
   def show
-    if params[:path_id]
-      @back_path = path_path(@position.path)
-    else
-      @back_path = groups_path # paths_path
-    end
+    @back_path = device_positions_path(@position.device)
   end
 
   # GET /positions/new
   def new
-    @position = @path.positions.new
+    @position = @device.positions.new
   end
 
   # GET /positions/1/edit
@@ -34,11 +30,11 @@ class PositionsController < ApplicationController
   # POST /positions
   # POST /positions.json
   def create
-    @position = @path.positions.new(position_params)
+    @position = @device.positions.new(position_params)
 
     respond_to do |format|
       if @position.save
-        format.html { redirect_to @position, notice: 'Position was successfully created.' }
+        format.html { redirect_to device_positions_path(@device, @position), notice: 'Position was successfully created.' }
         format.json { render :show, status: :created, location: @position }
       else
         format.html { render :new }
@@ -52,7 +48,7 @@ class PositionsController < ApplicationController
   def update
     respond_to do |format|
       if @position.update(position_params)
-        format.html { redirect_to @position, notice: 'Position was successfully updated.' }
+        format.html { redirect_to device_positions_path(@position.device), notice: 'Position was successfully updated.' }
         format.json { render :show, status: :ok, location: @position }
       else
         format.html { render :edit }
@@ -64,10 +60,10 @@ class PositionsController < ApplicationController
   # DELETE /positions/1
   # DELETE /positions/1.json
   def destroy
-    path = @position.path
+    device = @position.device
     @position.destroy
     respond_to do |format|
-      format.html { redirect_to path_url(path), notice: 'Position was successfully destroyed.' }
+      format.html { redirect_to device_positions_url(device), notice: 'Position was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -78,18 +74,19 @@ class PositionsController < ApplicationController
       @position = Position.find(params[:id])
     end
 
-    def set_path
-      if params[:path_id]
-        @path = Path.find(params[:path_id])
+    def set_device
+      if params[:device_id]
+        @device = Device.find(params[:device_id])
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_params
-      if params[:path_id]
-        params.permit(:path_id, :when, :lng, :lat)
+      position = params[:position]
+      if position && !position.empty?
+        params.require(:position).permit(:device_id, :when, :lng, :lat)
       else
-        params.require(:position).permit(:path_id, :when, :lng, :lat)
+        params.permit(:device_id, :when, :lng, :lat)
       end
     end
 end

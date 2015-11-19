@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   
   scope '/1.0' do
     resources :devices, shallow: true do
-      resources :paths do
-        resources :positions
-      end
+      resources :positions
       resources :roll_calls do
         resources :roll_call_answers
       end

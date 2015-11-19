@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>id</th>
-      <th>Path</th>
+      <th>Device</th>
       <th>When</th>
       <th>Lng</th>
       <th>Lat</th>
@@ -18,7 +18,7 @@
     <% @positions.each do |position| %>
       <tr>
         <td><%= position.id %></td>
-        <td><%= link_to 'path', position.path %></td>
+        <td><%= link_to position.device.serial, position.device %></td>
         <td><%= position.when %></td>
         <td><%= position.lng %></td>
         <td><%= position.lat %></td>
@@ -32,6 +32,6 @@
 
 <br>
 
-<%= link_to 'New Position', new_position_path %>
+<%= link_to 'New Position', new_device_position_path(device_id: @device.id) %>
 
 <%= render 'shared/footer' %>

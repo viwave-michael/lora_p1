@@ -19,21 +19,17 @@ g2.devices << en4
 
 g3 = Group.create(name: 'Back To The Future', description: 'Go watch the movie..')
 
-p1 = en2.paths.create()
-p2 = en3.paths.create()
-p3 = en4.paths.create()
+en2.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
+en2.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
+en2.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
 
-p1.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
-p1.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
-p1.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
+en3.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
+en3.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
+en3.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
 
-p2.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
-p2.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
-p2.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
-
-p3.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
-p3.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
-p3.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
+en4.positions.create(when: DateTime.new(2015, 10, 9, 15, 30, 0), lng:139.75, lat:35.7)
+en4.positions.create(when: DateTime.new(2015, 10, 9, 15, 45, 0), lng:139.81, lat:35.2)
+en4.positions.create(when: DateTime.new(2015, 10, 9, 16, 00, 0), lng:139.94, lat:34.9)
 
 rc1 = bs2.roll_calls.create(when: DateTime.new(2015, 10, 9, 15, 20, 0), lng:139.70, lat:35.6, manual: false)
 en2.roll_call_answers.create(roll_call_id: rc1.id, when: DateTime.new(2015, 10, 9, 15, 20, 20), lng:139.70, lat:35.6)
