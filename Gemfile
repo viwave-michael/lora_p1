@@ -48,3 +48,10 @@ group :production do
   gem 'pg', '~> 0.18.3'
   gem 'rails_12factor', '~> 0.0.3'
 end
+
+group :test do
+  gem 'minitest-reporters', '~> 1.1', '>= 1.1.5'
+  gem 'mini_backtrace', '~> 0.1.3'
+  gem 'guard'
+  gem 'guard-minitest', '~> 2.4', '>= 2.4.4'
+end
