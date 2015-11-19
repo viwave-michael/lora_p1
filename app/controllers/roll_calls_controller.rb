@@ -15,11 +15,7 @@ class RollCallsController < ApplicationController
   # GET /roll_calls/1
   # GET /roll_calls/1.json
   def show
-    if params[:device_id]
-      @back_path = device_path(@roll_call.device)
-    else
-      @back_path = groups_path # roll_calls_path
-    end
+    @back_path = device_path(@roll_call.device)
   end
 
   # GET /roll_calls/new

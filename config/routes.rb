@@ -4,12 +4,10 @@ Rails.application.routes.draw do
   scope '/1.0' do
     resources :devices, shallow: true do
       resources :positions
-      resources :roll_calls do
-        resources :roll_call_answers
-      end
-      resources :help_calls do
-        resources :help_call_answers
-      end
+      resources :roll_calls
+      resources :roll_call_answers
+      resources :help_calls
+      resources :help_call_answers
     end
 
     resources :groups

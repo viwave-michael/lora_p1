@@ -20,7 +20,7 @@
       <tr>
         <td><%= help_call_answer.id %></td>
         <td><%= link_to help_call_answer.device.serial, help_call_answer.device %></td>
-        <td><%= help_call_answer.help_call %></td>
+        <td>help_call_answers/<%= help_call_answer.help_call.id %></td>
         <td><%= help_call_answer.when %></td>
         <td><%= help_call_answer.lng %></td>
         <td><%= help_call_answer.lat %></td>
@@ -34,6 +34,6 @@
 
 <br>
 
-<%= link_to 'New Help call answer', new_help_call_answer_path %>
+<%= link_to 'New Help call answer', new_device_help_call_answer_path(@device) %>
 
 <%= render 'shared/footer' %>

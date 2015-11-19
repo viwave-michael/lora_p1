@@ -17,10 +17,8 @@ class HelpCallAnswersController < ApplicationController
   def show
     if params[:help_call_id]
       @back_path = help_call_path(@help_call_answer.help_call)
-    elsif params[:device_id]
-      @back_path = device_path(@help_call_answer.device)
     else
-      @back_path = groups_path # help_call_answers_path
+      @back_path = device_path(@help_call_answer.device)
     end
   end
 
@@ -40,7 +38,7 @@ class HelpCallAnswersController < ApplicationController
 
     respond_to do |format|
       if @help_call_answer.save
-        format.html { redirect_to @help_call_answer, notice: 'Help call answer was successfully created.' }
+        format.html { redirect_to device_help_call_answers_path(@device), notice: 'Help call answer was successfully created.' }
         format.json { render :show, status: :created, location: @help_call_answer }
       else
         format.html { render :new }
@@ -54,7 +52,7 @@ class HelpCallAnswersController < ApplicationController
   def update
     respond_to do |format|
       if @help_call_answer.update(help_call_answer_params)
-        format.html { redirect_to @help_call_answer, notice: 'Help call answer was successfully updated.' }
+        format.html { redirect_to device_help_call_answers_path(@device), notice: 'Help call answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @help_call_answer }
       else
         format.html { render :edit }
@@ -69,7 +67,7 @@ class HelpCallAnswersController < ApplicationController
     device = @help_call_answer.device
     @help_call_answer.destroy
     respond_to do |format|
-      format.html { redirect_to device_url(device), notice: 'Help call answer was successfully destroyed.' }
+      format.html { redirect_to device_help_call_answers_path(device), notice: 'Help call answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

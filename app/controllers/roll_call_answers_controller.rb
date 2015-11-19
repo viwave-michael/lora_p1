@@ -17,10 +17,8 @@ class RollCallAnswersController < ApplicationController
   def show
     if params[:roll_call_id]
       @back_path = roll_call_path(@roll_call_answer.roll_call)
-    elsif params[:device_id]
-      @back_path = device_path(@roll_call_answer.device)
     else
-      @back_path = groups_path # roll_call_answers_path
+      @back_path = device_path(@roll_call_answer.device)
     end
   end
 
@@ -40,7 +38,7 @@ class RollCallAnswersController < ApplicationController
 
     respond_to do |format|
       if @roll_call_answer.save
-        format.html { redirect_to @roll_call_answer, notice: 'Roll call answer was successfully created.' }
+        format.html { redirect_to device_roll_call_answers_path(@device), notice: 'Roll call answer was successfully created.' }
         format.json { render :show, status: :created, location: @roll_call_answer }
       else
         format.html { render :new }
@@ -54,7 +52,7 @@ class RollCallAnswersController < ApplicationController
   def update
     respond_to do |format|
       if @roll_call_answer.update(roll_call_answer_params)
-        format.html { redirect_to @roll_call_answer, notice: 'Roll call answer was successfully updated.' }
+        format.html { redirect_to device_roll_call_answers_path(@device), notice: 'Roll call answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @roll_call_answer }
       else
         format.html { render :edit }
@@ -69,7 +67,7 @@ class RollCallAnswersController < ApplicationController
     device = @roll_call_answer.device
     @roll_call_answer.destroy
     respond_to do |format|
-      format.html { redirect_to device_url(device), notice: 'Roll call answer was successfully destroyed.' }
+      format.html { redirect_to device_roll_call_answers_path(device), notice: 'Roll call answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

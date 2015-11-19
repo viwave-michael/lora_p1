@@ -15,11 +15,7 @@ class HelpCallsController < ApplicationController
   # GET /help_calls/1
   # GET /help_calls/1.json
   def show
-    if params[:device_id]
-      @back_path = device_path(@help_call.device)
-    else
-      @back_path = groups_path # help_calls_path
-    end
+    @back_path = device_path(@help_call.device)
   end
 
   # GET /help_calls/new

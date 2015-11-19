@@ -18,7 +18,7 @@ class DevicesController < ApplicationController
     if params[:group_id]
       @back_path = group_path(params[:group_id])
     else
-      @back_path = groups_path
+      @back_path = devices_path
     end
   end
 

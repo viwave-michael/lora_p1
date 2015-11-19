@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>id:</strong>
+  <%= @device.id %>
+</p>
+
+<p>
   <strong>Serial:</strong>
   <%= @device.serial %>
 </p>
@@ -37,12 +42,12 @@
 
 <p>
   <strong>Roll Call Answers</strong>
+  (<%= link_to 'Edit', device_roll_call_answers_path(@device) %>)
   <ul>
     <% @device.roll_call_answers.each do |answer| %>
     <li>
       <%= link_to 'answer', 
         roll_call_answer_path(answer, device_id: @device.id) %>
-      (<%= link_to 'Edit', roll_call_path(answer.roll_call) %>)
     </li>
     <% end %>
   </ul>
@@ -63,12 +68,12 @@
 
 <p>
   <strong>Help Call Answers</strong>
+  (<%= link_to 'Edit', device_help_call_answers_path(@device) %>)
   <ul>
     <% @device.help_call_answers.each do |answer| %>
     <li>
       <%= link_to 'answer', 
         help_call_answer_path(answer, device_id: @device.id) %>
-      (<%= link_to 'Edit', help_call_path(answer.help_call) %>)
     </li>
     <% end %>
   </ul>
