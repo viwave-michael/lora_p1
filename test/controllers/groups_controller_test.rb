@@ -5,11 +5,19 @@ class GroupsControllerTest < ActionController::TestCase
   #   @group = groups(:one)
   # end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:groups)
-  # end
+  test "should get index" do
+    get :index, format: :json
+    assert_response :success
+    assert_not_nil assigns(:groups)
+
+    groups = JSON.parse(@response.body)
+    groups.each do |group|
+      assert_not_nil group['id']
+      assert_not_nil group['name']
+      assert_not_nil group['description']
+      assert_not_nil group['url']
+    end
+  end
 
   # test "should get new" do
   #   get :new
