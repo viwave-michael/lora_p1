@@ -1,9 +1,21 @@
 <h1>Welcome To LoRa Prototype</h1>
 
+<p>LoRa is a web service for tracking where objects are, and providing security services. The web site allows you to manage those objects. The REST API allows objects to interact with each other to provide services for people.</p>
 <p>Current status: prototype 1.</p>
 
-<p>Manage <%= link_to 'Devices', devices_path %>.</p>
-<p>Manage <%= link_to 'Groups', groups_path %>.</p>
+<h2>Manage Objects</h2>
+<ul>
+  <li><%= link_to 'Devices', devices_path %>.</li>
+  <li><%= link_to 'Groups', groups_path %>.</li>
+</ul>
+
+<h2>API Documentation</h2>
+<ul>
+  <li><a href="https://docs.google.com/a/viwave.com/document/d/1QlI2zlR83q4orD_qOlg3DFqOvFWpC9E-uzoeoJAv_cI/edit?usp=sharing">
+API Reference</a></li>
+
+  <li><a href="https://docs.google.com/a/viwave.com/document/d/1Mz1dGhb_Q7p_2p2y2P7nmMghYQZbo5BBwNAwPrH25YY/edit?usp=sharing">API Tutorial</a></li>
+</ul>
 
 <h2>UML Class Diagram</h2>
 <%= link_to image_tag("/lrp1.png", style: "border: 1px solid black"), "/lrp1.png" %>
